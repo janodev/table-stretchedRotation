@@ -15,43 +15,7 @@
     UIImageView *_snapshotAfterRotation;
 }
 
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 25;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"identifier";
-    UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-    }
-    [[cell textLabel] setText:@"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut"];
-    [[cell textLabel] setNumberOfLines:2];
-    [[cell textLabel] setFont:[UIFont systemFontOfSize:12]];
-
-    return cell;
-}
-
-#pragma mark - Orientation
-
-- (BOOL)shouldAutorotate {
-    return YES;
-}
-
--(NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskAll;
-}
-
-
 #pragma mark - Stretched Rotation
-
 
 // Called before any of the changes have been applied.
 -(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -178,6 +142,43 @@ static UIImageView *CaptureSnapshotOfView(UIView *targetView)
 	result = UIEdgeInsetsMake(0, leftFixedWidth, 0, rightFixedWidth);
     
 	return result;
+}
+
+
+// - nothing interesting beyond this point - 
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 25;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"identifier";
+    UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    }
+    [[cell textLabel] setText:@"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut"];
+    [[cell textLabel] setNumberOfLines:2];
+    [[cell textLabel] setFont:[UIFont systemFontOfSize:12]];
+
+    return cell;
+}
+
+#pragma mark - Orientation
+
+- (BOOL)shouldAutorotate {
+    return YES;
+}
+
+-(NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskAll;
 }
 
 
