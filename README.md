@@ -20,8 +20,9 @@ Here is the fixed version:
 
 ![Stretched rotation](https://raw.github.com/j4n0/table-stretchedRotation/master/pages/stretched-rotation.gif)
 
-Smooth. The code is rendering the model tree to an UIImage before the model tree changes,
-then it inserts that image, and stretches only the red area (see below) during the animation.
+Smooth. The code is rendering the model tree to an UIImage before there is any change in the model tree,
+then it inserts that image, and crossfades with the final state. 
+The only area stretched is the red column shown in the image below.
 
 ![Snapshot rotation](https://raw.github.com/j4n0/table-stretchedRotation/master/pages/snapshot-rotation.png)
 
