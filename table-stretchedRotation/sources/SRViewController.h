@@ -1,11 +1,7 @@
-
-/* Code from the demo
- *
- *   WWDC 2012 Session 240 - Polishing Your Interface Rotations
- *                           25:43 Snapshot Rotations by Josh Shaffer
- */
+// BSD License. Created by jano@jano.com.es
 
 #import <QuartzCore/QuartzCore.h>
+#import <objc/runtime.h>
 
 @interface SRViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
