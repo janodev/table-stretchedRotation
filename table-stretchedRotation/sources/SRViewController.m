@@ -52,23 +52,6 @@
 
 #pragma mark - Stretched Rotation
 
-static UIImageView *CaptureSnapshotOfView(UIView *targetView)
-{
-    UIGraphicsBeginImageContextWithOptions([targetView bounds].size,
-                                           YES, // opaque, no transparency needed
-                                           0);  // 0 to use scale of the main screen
-    // shift by the amount scrolled by
-	CGContextTranslateCTM(UIGraphicsGetCurrentContext(), -[targetView bounds].origin.x, -[targetView bounds].origin.y);
-    
-	[[targetView layer] renderInContext:UIGraphicsGetCurrentContext()]; // render the model tree
-	UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-	UIGraphicsEndImageContext();
-    
-	UIImageView *snapshotView = [[UIImageView alloc] initWithImage:image];
-	[snapshotView setFrame:[targetView frame]];
-	return snapshotView;
-}
-
 
 // Called before any of the changes have been applied.
 -(void) willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -166,6 +149,24 @@ static UIImageView *CaptureSnapshotOfView(UIView *targetView)
 #pragma mark - Utilities
 
 
+static UIImageView *CaptureSnapshotOfView(UIView *targetView)
+{
+    UIGraphicsBeginImageContextWithOptions([targetView bounds].size,
+                                           YES, // opaque, no transparency needed
+                                           0);  // 0 to use scale of the main screen
+    // shift by the amount scrolled by
+	CGContextTranslateCTM(UIGraphicsGetCurrentContext(), -[targetView bounds].origin.x, -[targetView bounds].origin.y);
+    
+	[[targetView layer] renderInContext:UIGraphicsGetCurrentContext()]; // render the model tree
+	UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+    
+	UIImageView *snapshotView = [[UIImageView alloc] initWithImage:image];
+	[snapshotView setFrame:[targetView frame]];
+	return snapshotView;
+}
+
+
 -(UIEdgeInsets)unstretchedInsetsForTableView:(UITableView*)targetView {
 	UIEdgeInsets result = UIEdgeInsetsZero;
 	
@@ -178,6 +179,7 @@ static UIImageView *CaptureSnapshotOfView(UIView *targetView)
     
 	return result;
 }
+
 
 @end
 
