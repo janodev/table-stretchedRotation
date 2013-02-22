@@ -1,7 +1,7 @@
 // BSD License. Created by jano@jano.com.es
 
 #import <QuartzCore/QuartzCore.h>
-#import <objc/runtime.h>
+#import "UIView+FrameGeometry.h"
 
 @interface SRViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 

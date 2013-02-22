@@ -44,14 +44,7 @@
 	[UIView setAnimationsEnabled:NO];
 	
 	_snapshotAfterRotation = CaptureSnapshotOfView(_tableView);
-    
-    {
-        // [snapshotAfterRotation setFramePreservingHeight:frameBeforeRotation];
-        CGFloat height = _snapshotAfterRotation.frame.size.height;
-        CGRect rect = _frameBeforeRotation;
-        rect.size.height = height;
-        [_snapshotAfterRotation setFrame:rect];
-    }
+    [_snapshotAfterRotation setFramePreservingHeight:_frameBeforeRotation];
     
 	UIEdgeInsets unstretchedArea = [self unstretchedInsetsForTableView:_tableView];
 	
@@ -78,13 +71,7 @@
 	}
 	
     [_snapshotAfterRotation setFrame:_frameAfterRotation];
-    {
-        // [snapshotBeforeRotation setFramePreservingHeight:frameAfterRotation];
-        CGFloat height = _snapshotBeforeRotation.frame.size.height;
-        CGRect rect = _frameAfterRotation;
-        rect.size.height = height;
-        [_snapshotBeforeRotation setFrame:rect];
-    }
+    [_snapshotBeforeRotation setFramePreservingHeight:_frameAfterRotation];
     
     // no need to render the table at this point because it's covered
 	[_tableView setHidden:YES];
