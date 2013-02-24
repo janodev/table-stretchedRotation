@@ -11,7 +11,8 @@ This is a normal rotation:
 ![Normal rotation](https://raw.github.com/j4n0/table-stretchedRotation/master/pages/normal-rotation.gif)
 
 As we see, the text changes suddenly before a rotation. This happens because any view implementing `drawRect:` 
-redraws itself before an animation starts, therefore showing instantly the changes in the model tree.
+(like the table cells) redraws itself before an animation starts, therefore showing instantly the changes in 
+the model tree.
 
 Here is the fixed version:
 
